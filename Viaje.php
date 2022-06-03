@@ -62,35 +62,38 @@ class Viaje{
     /* @param int $nuevaCantidad */
     /* @return boolean */
     public function cambiarMaxDePasajeros($nuevaCantidad){
+        $banderin = false;
         if($nuevaCantidad > count($this->getObjPasajeros())-1){
             $this->setCantMaxPasajeros($nuevaCantidad);
-            return true;
+            $banderin = true;
         }else
-        return false;
+        return $banderin;
     }
     /* funcion que agrega pasajeros hasta que supere la capacidad maxima */
     /* @param array $arrayNuevosPasajeros */
     /* @return boolean */
     public function agregarPasajero($arrayNuevosPasajeros){
+        $banderin = false;
         if (count($this->getObjPasajeros()) < $this->getCantMaxPasajeros()){
             $screenshotDatosPasajeros = $this->getObjPasajeros();
             array_push($screenshotDatosPasajeros,$arrayNuevosPasajeros);
             $this->setObjPasajeros($screenshotDatosPasajeros);
-            return true;
+            $banderin = true;
         }else
-        return false;
+        return $banderin;
     }
     /* funcion que quita pasajero segun su posicion dentro del array asociativo */
     /* @param int $posicionPasajero */
     /* @return boolean */
     public function quitarPasajero($posicionPasajero){
+        $banderin = false;
         if ($posicionPasajero < count($this->getObjPasajeros())+1){
             $screenshotDatosPasajeros = $this->getObjPasajeros();
             unset($screenshotDatosPasajeros[($posicionPasajero-1)]);
             $this->setObjPasajeros(array_values($screenshotDatosPasajeros));
-            return true;
+            $banderin = true;
         }else
-        return false;
+        return $banderin;
     }
     /* funcion para listar pasajeros en una variable iterando desde un recorrido de un array */
     /* @return string */
